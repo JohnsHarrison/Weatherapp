@@ -63,8 +63,12 @@ async function handleSubmit(){
 
       {current.Temperature ? 
       <div>
-        <p>It is {current.WeatherText}</p>
+        <p> It is {current.WeatherText}</p> 
         <p>and currently {current.Temperature.Imperial.Value}° fahrenheit or {current.Temperature.Metric.Value}° celsius</p>
+        <p>HasPrecipitation = {(current.HasPrecipitation).toString()}</p>
+        <p>IsDayTime = {(current.IsDayTime).toString()}</p>
+        <p>PrecipitationType = {(current.PrecipitationType) === null ? "null" : current.PrecipitationType}</p>  {/*Possible values are Rain, Snow, Ice, or Mixed*/}
+        <p>API last updated {new Date(current.LocalObservationDateTime).toLocaleString()}</p>
       </div> : null}
     </div>
   );
