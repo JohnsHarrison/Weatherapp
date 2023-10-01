@@ -1,4 +1,5 @@
 import { useEffect,useState } from "react"
+import { AiFillCaretLeft,AiFillCaretDown } from "react-icons/ai";
 
 function Dropdown({parentState,handleAPI,setParentState}){
 
@@ -17,14 +18,23 @@ function Dropdown({parentState,handleAPI,setParentState}){
     },[handleAPI,parentState])
 
     const responseList = response.map((result,id)=>{
-        return<div key={id} onClick={()=>{setParentState(result)}}>{result.LocalizedName}</div>
+        return<div className="dropdown_option" key={id} onClick={()=>{setParentState(result)}}>{result.LocalizedName}</div>
     })
 
     return(
-        <div onClick={()=>{setIsOpen(!isOpen)}}>
-            {!parentState.ID ? <p>SELECT</p> : <p>{parentState.LocalizedName}</p>}
+        <div className="box" onClick={()=>{setIsOpen(!isOpen)}}>
+            <div className="dropdown">
+                {!parentState.ID ? <p className="dropdown_label">SELECT</p> : <p className="dropdown_label">{parentState.LocalizedName}</p>}  
+                <div style={{"display":"flex"}}>
+                    {
+                        isOpen ? <AiFillCaretLeft/> : <AiFillCaretDown/>
+                    }
+                </div>
+                  
+            </div>
+           
             {
-                !isOpen && <div>{responseList}</div>
+                !isOpen && <div className="dropdown_content">{responseList}</div>
             }
         </div>
     )

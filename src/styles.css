@@ -1,0 +1,34 @@
+*{
+    box-sizing: border-box;
+}
+
+h3{
+    border: 1px solid black;
+    margin: 5px 0px 0px 0px;
+    width: 150px;
+}
+
+.dropdown{
+    display: flex;
+    align-items: center;
+    border: 1px solid black;
+    width: 150px;
+    justify-content: space-between;
+}
+
+.dropdown_label{
+    margin: 5px;
+}
+
+.dropdown_content{
+    border: 1px solid black;
+    width: 150px;
+    padding: 5px;
+    max-height: 200px;
+    overflow-y: auto;
+    margin-bottom: 10px;
+}
+
+.dropdown_option{
+    margin: 5px 0px;
+}

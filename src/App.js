@@ -1,6 +1,8 @@
 import axios from 'axios';
 import { useState } from 'react';
 import Dropdown from './Components/Dropdown';
+import './styles.css'
+
 
 function App() {
   const [region, setRegion] = useState([])
@@ -53,10 +55,28 @@ async function handleSubmit(){
 
   return (
     <div className="App">
-      <div><Dropdown parentState={region} setParentState={setRegion} handleAPI={getRegion}/></div>
-      {region.ID ? <div><Dropdown parentState={country} setParentState={setCountry} handleAPI={getCountry}/></div>: null}
-      {country.ID ? <Dropdown parentState={state} setParentState={setState} handleAPI={getState}/> : null}
-      {state.ID ? <input onKeyDown={(e)=>{if(e.key === "Enter"){handleSubmit()}}}  onChange={(event)=>{setInputText(event.target.value)}}></input> : city}
+      <div>
+        <h3>Select a region...</h3>
+        <Dropdown parentState={region} setParentState={setRegion} handleAPI={getRegion}/>
+      </div>
+      {region.ID ? 
+        <div>
+          <h3>Select a country...</h3>
+          <Dropdown parentState={country} setParentState={setCountry} handleAPI={getCountry}/>
+        </div>
+      :null}
+      {country.ID ?
+        <div>
+          <h3>Select a state...</h3> 
+          <Dropdown parentState={state} setParentState={setState} handleAPI={getState}/>
+        </div> 
+      :null}
+      {state.ID ? 
+        <div>
+          <h3>Enter a city...</h3>
+          <input style={{"width":"150px"}} onKeyDown={(e)=>{if(e.key === "Enter"){handleSubmit()}}}  onChange={(event)=>{setInputText(event.target.value)}}></input> 
+        </div>
+      :city}
       {city.length > 0 ? <div>{city.map((result)=>{
       return <p>{result.LocalizedName}, {result.AdministrativeArea.LocalizedName}, {result.PrimaryPostalCode}</p>
       })}</div> : null}
