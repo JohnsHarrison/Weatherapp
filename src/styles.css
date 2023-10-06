@@ -1,5 +1,12 @@
 *{
     box-sizing: border-box;
+    margin: 0;
+}
+
+.App{
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
 }
 
 h3{
@@ -32,3 +39,32 @@ h3{
 .dropdown_option{
     margin: 5px 0px;
 }
+
+.container{
+    overflow: hidden;
+    position: relative;
+    z-index: 1;
+    height: 100%;
+}
+
+.fog{
+    position: absolute;
+    background-image: url(./assets/fog_png.png);
+    overflow: hidden;
+    background-position: bottom;
+    height: 560px;
+    width: 5076px;
+    animation: slide 60s linear infinite;
+    bottom: 0;
+    z-index: 0;
+    opacity: 50%;
+}
+
+@keyframes slide {
+    0% {
+      transform: translate3d(0, 0, 0);
+    }
+    100% {
+      transform: translate3d(-1692px, 0, 0); /* The image width */
+    }
+  }
